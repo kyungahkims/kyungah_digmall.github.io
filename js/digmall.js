@@ -204,13 +204,15 @@ $(window).resize(onResize).trigger('resize'); */
 	});
 }); */
 
-function onResize() {
-	const winW = $(window).innerWidth();
-
-	let vh = window.innerHeight * 0.01;
+function setRealVh() {
+	const vh = window.innerHeight * 0.01;
 	document.documentElement.style.setProperty('--vh', `${vh}px`);
+}
 
-	if (winW <= 1190) {
+function onResize() {
+	setRealVh();
+
+	if ($(window).innerWidth() <= 1190) {
 		$('.swiper-wrapper').css('display', 'flex');
 		if (!swiper) initSlide();
 	} else {
@@ -220,6 +222,4 @@ function onResize() {
 }
 
 $(window).on('resize', onResize);
-$(document).ready(function () {
-	onResize();
-});
+onResize();
