@@ -1055,9 +1055,12 @@ footer ul {
   margin: auto;
   padding: 15px 0 20px;
 }
-footer ul li {
+footer ul li a {
   display: inline !important;
   white-space: nowrap;
+  text-decoration: none;
+  color: inherit;
+  margin-left: 5px;
 }
 footer ul li.adress {
   width: 100%;

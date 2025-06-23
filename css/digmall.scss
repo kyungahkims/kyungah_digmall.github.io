@@ -1022,8 +1022,13 @@ footer {
 		padding: 15px 0 20px;
 
 		li {
-			display: inline !important;
-			white-space: nowrap;
+			a {
+				display: inline !important;
+				white-space: nowrap;
+				text-decoration: none;
+				color: inherit;
+				margin-left: 5px;
+			}
 
 			&.adress {
 				width: 100%;
