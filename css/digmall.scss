@@ -1022,6 +1022,9 @@ footer {
 		padding: 15px 0 20px;
 
 		li {
+			display: inline !important;
+			white-space: nowrap;
+
 			&.adress {
 				width: 100%;
 			}

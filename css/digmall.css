@@ -1055,6 +1055,10 @@ footer ul {
   margin: auto;
   padding: 15px 0 20px;
 }
+footer ul li {
+  display: inline !important;
+  white-space: nowrap;
+}
 footer ul li.adress {
   width: 100%;
 }
