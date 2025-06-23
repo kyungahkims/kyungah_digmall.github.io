@@ -17,7 +17,6 @@
 				<a href="#"><img src="../img/logo-navi.png" alt="디지털그라운드 로고" class="img"></a>
 			</div>
 			<div class="link_wrap">
-				<!-- <a href="./digmall_join.html" target="_blank" class="join_link">가입하기</a> -->
 				<a href="#" target="_blank" class="login_link">딜러 계정 로그인</a>
 			</div>
 		</header><!-- header -->
@@ -34,7 +33,6 @@
 				</div>
 				<form>
 					<h2 class="mo">딜러(사장님) 가입하기</h2>
-					<!-- .error, .possible -->
 					<h3>기본 정보</h3>
 					<ul class="form_wrap">
 						<li>
@@ -42,6 +40,8 @@
 							<div><input type="text" id="user_id" class="possible" placeholder="ID를 입력해 주세요."><button type="button"
 									class="check_btn">중복확인</button></div>
 							<p class="alert possible">사용할 수 있는 아이디에요.</p>
+							<!-- ⭐ 사용 할 수 있는 경우 input, p 태그에 .possible 클래스 추가-->
+							<!-- ⭐ 사용 할 수 없는 경우 input, p 태그에 .error 클래스 추가-->
 						</li>
 						<li>
 							<label for="user_pw">비밀번호<span>*</span></label>
@@ -82,6 +82,7 @@
 						<label for="checkbox"><span>[필수]</span> 이용약관에 동의합니다.</label>
 						<button type="button" class="modal1">전문보기 ></button>
 						<p class="alert error">이 필드는 필수입니다.</p>
+						<!-- ⭐ 사용 할 수 없는 경우 p 태그에 .error 클래스 추가-->
 					</div>
 					<div class="check_wrap">
 						<input type="checkbox" id="checkbox2">
