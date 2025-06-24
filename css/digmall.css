@@ -244,95 +244,97 @@ header .link_wrap a.login_link {
 .page2 {
   background-color: #f8f8f8;
   padding: 110px 0 104px;
-}
-.page2 .wrapper {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-pack: justify;
-      -ms-flex-pack: justify;
-          justify-content: space-between;
-}
-.page2 .wrapper .title h2 {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  font-size: 42px;
-  line-height: 1.33;
-  margin-bottom: 50px;
-}
-.page2 .wrapper .title h2::after {
-  content: "";
-  width: 48px;
-  height: 48px;
-  background: url("../img/img-tit-01.png") no-repeat center;
-  margin-left: 8px;
-}
-.page2 .wrapper .title h2 span {
-  color: #f53b3b;
-}
-.page2 .wrapper .title p {
-  font-size: 24px;
-  font-weight: 300;
-  line-height: 1.33;
-  color: #777;
-}
-.page2 .wrapper .title p.m_top {
-  margin-top: 32px;
-}
-.page2 .wrapper .title button {
-  width: 148px;
-  height: 54px;
-  font-size: 18px;
-  font-weight: 500;
-  color: #fff;
-  border-radius: 8px;
-  background-color: #f53b3b;
-  margin-top: 30px;
-}
-.page2 .wrapper .box_wrap {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-column-gap: 30px;
-     -moz-column-gap: 30px;
-          column-gap: 30px;
-}
-.page2 .wrapper .box_wrap article {
-  width: 376px;
-  height: 336px;
-  text-align: center;
-  border-radius: 20px;
-  border: solid 1px #f0f0f0;
-  background-color: #fff;
-  -webkit-box-shadow: 3px 6px 6px 0 rgba(34, 34, 34, 0.11);
-          box-shadow: 3px 6px 6px 0 rgba(34, 34, 34, 0.11);
-}
-.page2 .wrapper .box_wrap article::before {
-  content: "";
-  width: 88px;
-  height: 88px;
-  display: inline-block;
-  margin: 57px auto 35px;
-}
-.page2 .wrapper .box_wrap article:nth-child(1)::before {
-  background: url("../img/user-img.png") no-repeat center;
-}
-.page2 .wrapper .box_wrap article:nth-child(2)::before {
-  background: url("../img/alram-img.png") no-repeat center;
-}
-.page2 .wrapper .box_wrap article h3 {
-  font-size: 24px;
-  font-weight: bold;
-  margin-bottom: 10px;
-}
-.page2 .wrapper .box_wrap article p {
-  font-size: 18px;
-  line-height: 1.33;
-  color: #888;
+  /* .wrapper {
+  	display: flex;
+  	justify-content: space-between;
+
+  	.title {
+  		h2 {
+  			display: flex;
+  			align-items: center;
+  			font-size: 42px;
+  			line-height: 1.33;
+  			margin-bottom: 50px;
+
+  			&::after {
+  				content: "";
+  				width: 48px;
+  				height: 48px;
+  				background: url('../img/img-tit-01.png') no-repeat center;
+  				margin-left: 8px;
+  			}
+
+  			span {
+  				color: #f53b3b;
+  			}
+  		}
+
+  		p {
+  			font-size: 24px;
+  			font-weight: 300;
+  			line-height: 1.33;
+  			color: #777;
+
+  			&.m_top {
+  				margin-top: 32px;
+  			}
+  		}
+
+  		button {
+  			width: 148px;
+  			height: 54px;
+  			font-size: 18px;
+  			font-weight: 500;
+  			color: #fff;
+  			border-radius: 8px;
+  			background-color: #f53b3b;
+  			margin-top: 30px;
+  		}
+  	}
+
+  	.box_wrap {
+  		display: flex;
+  		column-gap: 30px;
+
+  		article {
+  			width: 376px;
+  			height: 336px;
+  			text-align: center;
+  			border-radius: 20px;
+  			border: solid 1px #f0f0f0;
+  			background-color: #fff;
+  			box-shadow: 3px 6px 6px 0 rgba(34, 34, 34, 0.11);
+
+  			&::before {
+  				content: "";
+  				width: 88px;
+  				height: 88px;
+  				display: inline-block;
+  				margin: 57px auto 35px;
+  			}
+
+  			&:nth-child(1)::before {
+  				background: url('../img/user-img.png') no-repeat center;
+  			}
+
+  			&:nth-child(2)::before {
+  				background: url('../img/alram-img.png') no-repeat center;
+  			}
+
+  			h3 {
+  				font-size: 24px;
+  				font-weight: bold;
+  				margin-bottom: 10px;
+  			}
+
+  			p {
+  				font-size: 18px;
+  				line-height: 1.33;
+  				color: #888;
+  			}
+  		}
+  	}
+  } */
 }
 
 .page3 {
@@ -521,17 +523,18 @@ header .link_wrap a.login_link {
 .page3 .wrapper .box_wrap li p {
   opacity: 0.5;
 }
-.page3 .wrapper .box_wrap li:hover:nth-child(1)::before {
+.page3 .wrapper .box_wrap li:hover:nth-child(1)::before, .page3 .wrapper .box_wrap li.active:nth-child(1)::before {
   background: url("../img/step-1-on.png") no-repeat center/contain;
 }
-.page3 .wrapper .box_wrap li:hover:nth-child(2)::before {
+.page3 .wrapper .box_wrap li:hover:nth-child(2)::before, .page3 .wrapper .box_wrap li.active:nth-child(2)::before {
   background: url("../img/step-2-on.png") no-repeat center/contain;
 }
-.page3 .wrapper .box_wrap li:hover:nth-child(3)::before {
+.page3 .wrapper .box_wrap li:hover:nth-child(3)::before, .page3 .wrapper .box_wrap li.active:nth-child(3)::before {
   background: url("../img/step-3-on.png") no-repeat center/contain;
 }
 .page3 .wrapper .box_wrap li:hover h3,
-.page3 .wrapper .box_wrap li:hover p {
+.page3 .wrapper .box_wrap li:hover p, .page3 .wrapper .box_wrap li.active h3,
+.page3 .wrapper .box_wrap li.active p {
   opacity: 1;
 }
 
@@ -1274,9 +1277,9 @@ footer p {
     width: 100%;
     height: auto;
   }
-  .page2 {
-    overflow: hidden;
-  }
+  /* 	.page2 {
+  	overflow: hidden;
+  } */
   .page3 {
     background-color: #fff;
     padding: 85px 0 65px;

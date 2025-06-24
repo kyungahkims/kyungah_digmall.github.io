@@ -228,7 +228,7 @@ header {
 	background-color: #f8f8f8;
 	padding: 110px 0 104px;
 
-	.wrapper {
+	/* .wrapper {
 		display: flex;
 		justify-content: space-between;
 
@@ -318,7 +318,7 @@ header {
 				}
 			}
 		}
-	}
+	} */
 }
 
 .page3 {
@@ -484,7 +484,8 @@ header {
 					opacity: 0.5;
 				}
 
-				&:hover {
+				&:hover,
+				&.active {
 
 					&:nth-child(1)::before {
 						background: url('../img/step-1-on.png') no-repeat center/contain;
@@ -1284,9 +1285,9 @@ footer {
 		}
 	}
 
-	.page2 {
+	/* 	.page2 {
 		overflow: hidden;
-	}
+	} */
 
 	.page3 {
 		background-color: #fff;
