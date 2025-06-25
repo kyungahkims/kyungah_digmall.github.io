@@ -602,6 +602,7 @@ header {
 
 .page5 {
 	position: relative;
+	padding-bottom: 50px;
 
 	&::before {
 		content: '';
@@ -700,7 +701,7 @@ header {
 
 .link_page {
 	text-align: center;
-	margin: 50px auto 111px;
+	margin-bottom: 111px;
 
 	a {
 		display: inline-flex;
@@ -711,7 +712,6 @@ header {
 		font-size: 18px;
 		font-weight: 500;
 		border-radius: 8px;
-
 		transition: all 0.2s;
 
 		&:hover {

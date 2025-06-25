@@ -634,6 +634,7 @@ header .link_wrap a.login_link {
 
 .page5 {
   position: relative;
+  padding-bottom: 50px;
 }
 .page5::before {
   content: "";
@@ -734,7 +735,7 @@ header .link_wrap a.login_link {
 
 .link_page {
   text-align: center;
-  margin: 50px auto 111px;
+  margin-bottom: 111px;
 }
 .link_page a {
   display: -webkit-inline-box;
