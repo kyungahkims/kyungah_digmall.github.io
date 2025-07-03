@@ -19,10 +19,13 @@ function startPage3Animation() {
 	page3IntervalId = setInterval(function () {
 		currentIndex = (currentIndex + 1) % $items.length;
 		activateItem(currentIndex);
-	}, 2500);
+	}, 1500);
 }
 
 /* nav 스크롤 */
+let slide4Initialized = false;
+let animationInitialized = false;
+
 function onScroll() {
 	const scTop = $(this).scrollTop() + 20;
 	const pages = [];
@@ -46,8 +49,22 @@ function onScroll() {
 		$('.link').eq(activeIndex).addClass('active');
 	}
 
-	if (activeIndex === 1) {
+	if (activeIndex === 0 && !slide4Initialized) {
+		initSlide4();
+		slide4Initialized = true;
+	}
+
+	if (activeIndex !== 0) {
+		slide4Initialized = false;
+	}
+
+	if (activeIndex === 1 && !animationInitialized) {
 		startPage3Animation();
+		animationInitialized = true;
+	}
+
+	if (activeIndex !== 1) {
+		animationInitialized = false;
 	}
 }
 
@@ -90,14 +107,14 @@ $('.faq').click(function () {
 			$currentAnswer.removeClass('active');
 			$clicked.find('.faq_q').removeClass('active3');
 			$clicked.find('button').removeClass('active2');
-			if (swiper) swiper.updateAutoHeight();
+			if (swiper1) swiper1.updateAutoHeight();
 			$('.faq').data('animating', false);
 		});
 	} else {
 		setTimeout(function () {
 			$currentAnswer.slideDown(300, function () {
 				$currentAnswer.addClass('active');
-				if (swiper) swiper.updateAutoHeight();
+				if (swiper1) swiper1.updateAutoHeight();
 				$('.faq').data('animating', false);
 			});
 			$clicked.find('.faq_q').addClass('active3');
@@ -121,6 +138,7 @@ $('.pw_btn').on('click', function () {
 $('.modal1').click(function () {
 	$('.modal_wrap1').css('display', 'flex');
 });
+
 $('.modal2').click(function () {
 	$('.modal_wrap2').css('display', 'flex');
 });
@@ -142,44 +160,189 @@ $('.agree_btn2').on('click', function () {
 });
 
 /* 슬라이드 */
-let swiper = null;
+let swiper1 = null;
+let swiper2 = null;
+let swiper3 = null;
+let swiper4 = null;
 
-function initSlide() {
-	swiper = new Swiper('.swiper', {
-		effect: 'slide',
-		slidesPerView: 'auto',
-		spaceBetween: 20,
-		autoHeight: true,
-		loop: true,
-		pagination: {
-			el: '.swiper-pagination',
-			clickable: true,
-		},
-		on: {
-			slideChange: function () {
-				if (this.realIndex === 2) {
-					startPage3Animation();
+function initSlide1() {
+	if (!swiper1) {
+		swiper1 = new Swiper('.swiper1', {
+			effect: 'slide',
+			slidesPerView: 'auto',
+			spaceBetween: 20,
+			autoHeight: true,
+			loop: true,
+			pagination: {
+				el: '.swiper-pagination',
+				clickable: true,
+			},
+			observer: true,
+			observeParents: true,
+			on: {
+				slideChange: function () {
+					if (this.realIndex === 1) {
+						initSlide2();
+						initSlide3();
+						swiper2 ?.autoplay ?.start();
+						swiper3 ?.autoplay ?.start();
+					}
+					if (this.realIndex === 2) {
+						swiper4 ?.autoplay ?.start();
+					}
+					if (this.realIndex === 4) {
+						startPage3Animation();
+					}
 				}
+			}
+		});
+	}
+}
+
+function initSlide2() {
+	const wrapper = document.querySelector('.swiper2 .swiper-wrapper');
+	const slides = wrapper.querySelectorAll('.swiper-slide');
+
+	if (!wrapper.dataset.cloned) {
+		const slideCount = slides.length;
+		for (let i = 0; i < slideCount * 2; i++) {
+			const clone = slides[i % slideCount].cloneNode(true);
+			wrapper.appendChild(clone);
+		}
+		wrapper.dataset.cloned = "true";
+	}
+
+	if (swiper2) {
+		swiper2.destroy(true, true);
+		swiper2 = null;
+	}
+	swiper2 = new Swiper('.swiper2', {
+		slidesPerView: 'auto',
+		spaceBetween: 15,
+		loop: true,
+		speed: 2000,
+		autoplay: {
+			delay: 0,
+			disableOnInteraction: false,
+		},
+		observer: true,
+		observeParents: true,
+	});
+}
+
+function initSlide3() {
+	const wrapper = document.querySelector('.swiper3 .swiper-wrapper');
+	const slides = wrapper.querySelectorAll('.swiper-slide');
+
+	if (!wrapper.dataset.cloned) {
+		const slideCount = slides.length;
+		for (let i = 0; i < slideCount * 2; i++) {
+			const clone = slides[i % slideCount].cloneNode(true);
+			wrapper.appendChild(clone);
+		}
+		wrapper.dataset.cloned = "true";
+	}
+
+	if (swiper3) {
+		swiper3.destroy(true, true);
+		swiper3 = null;
+	}
+	swiper3 = new Swiper('.swiper3', {
+		slidesPerView: 'auto',
+		spaceBetween: 15,
+		loop: true,
+		speed: 2000,
+		autoplay: {
+			delay: 0,
+			disableOnInteraction: false,
+		},
+		observer: true,
+		observeParents: true,
+	});
+}
+
+function initSlide4() {
+	if (swiper4) {
+		swiper4.destroy(true, true);
+		swiper4 = null;
+	}
+	swiper4 = new Swiper('.swiper4', {
+		direction: 'vertical',
+		autoHeight: true,
+		autoplay: {
+			delay: 0,
+			disableOnInteraction: false,
+			stopOnLastSlide: true,
+		},
+		speed: 5000,
+		loop: false,
+		loopAdditionalSlides: 1,
+		slidesPerView: 'auto',
+		spaceBetween: 15,
+		observer: true,
+		observeParents: true,
+		on: {
+			init() {
+				if (this.slides.length > 1) {
+					this.slideTo(1, 0);
+					this.slideTo(0, 0);
+				}
+				setTimeout(() => {
+					swiper4 ?.autoplay ?.start();
+				}, 100);
 			}
 		}
 	});
 }
 
-function destroySlide() {
-	if (swiper) {
-		swiper.destroy(true, true);
-		swiper = null;
+function destroySlide1() {
+	if (swiper1) {
+		swiper1.destroy(true, true);
+		swiper1 = null;
 	}
 }
 
+/* 반응형 구조 변경 */
+let articlesCloned = false;
+let $detachedPage2 = null;
+
 function onResize() {
 	if ($(window).innerWidth() <= 1190) {
-		$('.swiper-wrapper').css('display', 'flex');
-		if (!swiper) initSlide();
+		if (!articlesCloned) {
+			if (!$detachedPage2) {
+				$detachedPage2 = $('.page2').detach();
+			}
+
+			const $articles = $detachedPage2.find('article').clone().get().reverse();
+
+			$articles.forEach(function (article) {
+				$(article).insertAfter($('.page1'));
+			});
+
+			$('.swiper1 > .swiper-wrapper').css('display', 'flex');
+			destroySlide1();
+			requestAnimationFrame(() => {
+				initSlide1();
+			});
+
+			articlesCloned = true;
+		}
 	} else {
-		destroySlide();
-		$('.swiper-wrapper').css('display', 'block');
+		destroySlide1();
+		$('.swiper1 > .swiper-wrapper').css('display', 'block');
+
+		if (articlesCloned && $detachedPage2) {
+			$('.page1').nextAll('article').remove();
+			$detachedPage2.insertAfter('.page1');
+			$detachedPage2 = null;
+			articlesCloned = false;
+		}
 	}
+	setTimeout(() => {
+		initSlide2();
+		initSlide3();
+		initSlide4();
+	}, 100);
 }
 
 $(window).resize(onResize).trigger('resize');
